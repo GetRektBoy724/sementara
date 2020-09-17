@@ -5,9 +5,9 @@ class MetasploitModule < Msf::Encoder
     super(
       'Name'             => 'Powershell Base64 Script Encoder',
       'Description'      => %q{
-        PowerShell script base64 encoded and obfuscated.
+        PowerShell script base64 encoded and AMSI bypass code.
       },
-      'Author'           => 'Pr0xy bl4d3',
+      'Author'           => 'GetRektBoy724',
       'Arch'             => ARCH_CMD,
       'Platform'         => 'win')
  
