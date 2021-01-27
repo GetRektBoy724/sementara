@@ -16,7 +16,7 @@ class MetasploitModule < Msf::Post
       'License'       => MSF_LICENSE,
       'Author'        => [
         'Carlos Perez <carlos_perez[at]darkoperator.com>',
-        'phra <https://iwantmore.pizza>'
+        'phra <https://iwantmore.pizza>',
         'GetRektBoy724 <https://github.com/GetRektBoy724>'
       ],
       'Platform'      => [ 'win' ],
