@@ -12,11 +12,12 @@ class MetasploitModule < Msf::Post
       'Name'          => 'Windows Manage Process Migration',
       'Description'   => %q{ This module will migrate a Meterpreter session from one process
         to another. A given process PID to migrate to or the module can spawn one and
-        migrate to that newly spawned process.},
+        migrate to that newly spawned process.This is the modified version,GetRektBoy724 Only Modifies The Default Values},
       'License'       => MSF_LICENSE,
       'Author'        => [
         'Carlos Perez <carlos_perez[at]darkoperator.com>',
         'phra <https://iwantmore.pizza>'
+        'GetRektBoy724 <https://github.com/GetRektBoy724>'
       ],
       'Platform'      => [ 'win' ],
       'SessionTypes'  => [ 'meterpreter' ]
