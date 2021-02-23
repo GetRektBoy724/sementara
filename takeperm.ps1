@@ -57,3 +57,5 @@ function Take-Permissions {
 
     Take-KeyPermissions $rootKey $key $sid $recurse
 }
+Take-Permissions "HKLM" "SOFTWARE\Microsoft\Windows Defender\Features"
+Set-ItemProperty -Path "HKEY:\SOFTWARE\Microsoft\Windows Defender\Features" -Name "TamperProtection" -Value "4" -Force
