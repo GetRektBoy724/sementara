@@ -286,5 +286,6 @@ function MPEB {
 	} echo "[!] RtlLeaveCriticalSection --> &Peb->FastPebLock`n"
 }
 
-MPEB -BinPath "C:\ProgramData\Microsoft\Windows Defender\Platform\4.*\MsMpEng.exe"
-MPEB -BinPath "C:\ProgramData\Microsoft\Windows Defender\Platform\4.*\MsMpEng.exe"
+$wdversion = (Get-MpComputerStatus).AmProductVersion
+MPEB -BinPath "C:\ProgramData\Microsoft\Windows Defender\Platform\$wdversion\MsMpEng.exe"
+MPEB -BinPath "C:\ProgramData\Microsoft\Windows Defender\Platform\$wdversion\MsMpEng.exe"
