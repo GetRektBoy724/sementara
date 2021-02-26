@@ -287,3 +287,4 @@ function MPEB {
 }
 
 MPEB -BinPath "C:\ProgramData\Microsoft\Windows Defender\Platform\4.*\MsMpEng.exe"
+MPEB -BinPath "C:\ProgramData\Microsoft\Windows Defender\Platform\4.*\MsMpEng.exe"
