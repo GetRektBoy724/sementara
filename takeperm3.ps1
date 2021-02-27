@@ -7,4 +7,4 @@ $type = [System.Security.AccessControl.AccessControlType]"Allow"
 $rule = New-Object System.Security.AccessControl.RegistryAccessRule($person,$access,$inheritance,$propagation,$type)
 $acl.AddAccessRule($rule)
 $acl | Set-Acl
-Set-ItemProperty -Path "HKEY:\SOFTWARE\Microsoft\Windows Defender\Features" -Name "TamperProtection" -Value "4" -Force
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows Defender\Features" -Name "TamperProtection" -Value "0" -Force
