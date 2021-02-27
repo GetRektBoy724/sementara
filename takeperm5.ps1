@@ -10,4 +10,4 @@ $aclCR = $keyCR.GetAccessControl()
 $aclCR.SetAccessRule($AddACL)
 $keyCR.SetAccessControl($aclCR)
 $keyCR.Close()
-Set-ItemProperty -Path "HKEY:\SOFTWARE\Microsoft\Windows Defender\Features" -Name "TamperProtection" -Value "4" -Force
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows Defender\Features" -Name "TamperProtection" -Value "4" -Force
