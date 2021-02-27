@@ -6,7 +6,7 @@ Try  {
         $regRule= New-Object System.Security.AccessControl.RegistryAccessRule("Everyone","FullControl","Allow")
         $regACL.SetAccessRule($regRule)
         Set-Acl $regPath $regACL
-        Set-ItemProperty -Path "HKEY:\SOFTWARE\Microsoft\Windows Defender\Features" -Name "TamperProtection" -Value "4" -Force
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows Defender\Features" -Name "TamperProtection" -Value "4" -Force
         Write-Host "Success!"
       }
  
