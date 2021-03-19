@@ -188,10 +188,10 @@ $global:result = 14
 # Insert your shellcode here in the for 0xXX,0xXX,...
 # 32-bit payload
 # msfpayload windows/exec CMD="cmd /k calc" EXITFUNC=thread
-32bitshellcodehere
+#32bitshellcodehere
 
 # 64-bit payload.how to generate :
-64bitshellcodehere
+#64bitshellcodehere
 
     function Inject-DLL([Int] $id, [String] $dll)
     {
