@@ -265,7 +265,7 @@ public class Menyolong
 		// WinExec shellcode from: https://github.com/peterferrie/win-exec-calc-shellcode
 		// Compiled with: 
 		// nasm w64-exec-calc-shellcode.asm -DSTACK_ALIGN=TRUE -DFUNC=TRUE -DCLEAN=TRUE -o w64-exec-calc-shellcode.bin
-		//shellcodehere
+		shellcodehere
 		
 		// Once shellcode has executed return to thread original EIP address (mov to rax then jmp to address)
 		byte[] mov_rax = new byte[2] {
