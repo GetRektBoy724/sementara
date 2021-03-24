@@ -61,6 +61,6 @@ function Invoke-OneDoesNotSimplyBypassEntireWinDefender {
 $internetconnection = Test-Connection -ComputerName google.com -Quiet
 if ($internetconnection) {
     Invoke-OneDoesNotSimplyBypassEntireWinDefender
-else {
+}else {
     throw "This shit doesnt have internet connection,We cant continue!"
 }
